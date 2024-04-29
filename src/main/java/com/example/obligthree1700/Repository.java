@@ -17,7 +17,7 @@ public class Repository {
 
     // Example of using try-catch to catch potentional errors
     public boolean lagreBillett(Billett billett) {
-        String sql = "INSERT INTO Billett (fornavn, etternavn, tlf, epost) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO Billett (filmvalg, antall, fornavn, etternavn, tlf, epost) VALUES(?,?,?,?,?,?)";
         try {
             db.update(sql, billett.getFornavn(), billett.getEtternavn(), billett.getTlf(), billett.getEpost());
             return true;
@@ -27,15 +27,47 @@ public class Repository {
         }
     }
 
-        public List<Billett> hentAlleBilletter() {
-            String sql = "SELECT * FROM Billett";
-            List<Billett> alleBilletter = db.query(sql, new BeanPropertyRowMapper(Billett.class));
+    public List<Billett> hentAlleBilletter() {
+        String sql = "SELECT * FROM Billett";
+        try {
+            List<Billett> alleBilletter =  db.query(sql, new BeanPropertyRowMapper(Billett.class));
             return alleBilletter;
-        }
-
-        public void slettALleBilletter() {
-            String sql = "DELETE  FROM Billett";
-            db.update(sql);
+        } catch (Exception e) {
+            logger.error("Feil i hentAlleBilletter" + e);
+            return null;
         }
     }
+
+
+    public boolean slettAlleBilletter() {
+        String sql = "DELETE FROM Billett";
+        try {
+            db.update(sql);
+            return true;
+        } catch (Exception e) {
+            logger.error("Feil i slettAlleBilletter" + e);
+            return false;
+        }
+    }
+
+
+
+    public boolean logIn(String username, String password) {
+        String sql = "SELECT FROM User WHERE username = ? AND password = ?";
+        try {
+            int foundUser = db.queryForObject(sql, Integer.class, username, password);
+            if (foundUser > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+
+
+}
 

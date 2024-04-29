@@ -5,49 +5,26 @@
     <title>Oblig Three</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <script src="main.js"></script>
+    <script src="index.js"></script>
 </head>
 <body>
-<h1>Bestilling av kinobilletter</h1>
-
-<form class="form-group">
-    <label for="filmTitle">Velg film:</label>
-    <select id="filmTitle">
-        <option value="" disabled selected hidden>Ingen film valgt</option>
-        <option>Porco Rosso</option>
-        <option>Wall-e</option>
-        <option>Rango</option>
-    </select>
+<h1>Log in</h1>
+<form class="form">
     <div class="form-group">
-        <label for="antall">Antall:</label>
-        <input type="number" id="antall" min="1" max="9">
+        <label for="username">Brukernavn</label>
+        <input type="text" class="form-group" id="username" onchange="validateUsername()"/>
+        <span id="usernameError" style="color: red"></span>
     </div>
     <div class="form-group">
-        <label for="fNavn">Fornavn:</label>
-        <input type="text" id="fNavn">
-    </div>
-    <div class="form-group">
-        <label for="eNavn">Etternavn:</label>
-        <input type="text" id="eNavn">
-    </div>
-    <div class="form-group">
-        <label for="tlf">Telefonnummer:</label>
-        <input type="tel" id="tlf">
-    </div>
-    <div class="form-group">
-        <label for="epost">Epost:</label>
-        <input type="email" id="epost">
+        <label for="password">Passord</label>
+        <input type="password" class="form-group" id="password" onchange="validatePassword()"/>
+        <span id="passwordError" style="color: red"></span>
     </div>
 </form>
-
-
-<button class="btn btn-primary" id ="kjopBillett" onclick="kjopBillett()">Kjøp billett</button>
-
-<h3>Alle billetter</h3>
-<div id="alleBilletter"></div>
-
-<button class="btn btn-danger" id ="#slett-btn" onclick="slettAlle()">Slett alle billetter</button>
-
+<button class="btn btn-primary" onclick="login()">Logg inn</button><br/><br><br>
+<button class="btn btn-primary" onclick="logout()">Logg ut</button><br/><br><br>
+<button class="btn btn-danger" onclick="cryptatePassword()">Krypter alle passord</button><br/>
+<div id="loginError" style="color: red"></div>
 
 </body>
 </html>

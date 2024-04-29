@@ -1,5 +1,3 @@
-
-
 CREATE TABLE Billett (
     ID        INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
     fornavn   VARCHAR(255) NOT NULL,
@@ -7,3 +5,9 @@ CREATE TABLE Billett (
     tlf       VARCHAR(10) NOT NULL,
     epost     VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE User (
+    ID        INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    username   VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+)
