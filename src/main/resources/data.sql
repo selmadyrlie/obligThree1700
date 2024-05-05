@@ -4,5 +4,5 @@ INSERT INTO Billett (fornavn, etternavn, tlf, epost)
     VALUES ( 'O', 'K',  97463923, 'o.k@gmail.com');
 
 
-INSERT INTO User (username, password)
+INSERT INTO "User" (username, password)
     VALUES ( 'sdj', 'dust' );
