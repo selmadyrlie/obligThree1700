@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-
+@CrossOrigin(origins = {"http://localhost:63342", "http://localhost:8080"} )
 @RestController
 public class Controller {
 
@@ -35,17 +35,18 @@ public class Controller {
 
     @GetMapping("/hentAlle")
     public List<Billett> hent(HttpServletResponse response) throws IOException {
-        if ((boolean) session.getAttribute("loggetInn")) {
+     //   if ((boolean) session.getAttribute("loggetInn")) {
             List<Billett> alleBilletter = repo.hentAlleBilletter();
             if (alleBilletter == null) {
                 response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i hent funksjon i kontrollerklasse");
             }
             return alleBilletter;
-        } else {
+        }
+        /* else {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "kan ikke vise billetter, du er ikke logget inn");
             return null;
         }
-    }
+    } */
 
 
 
@@ -61,6 +62,8 @@ public class Controller {
         }
     }
 
+
+    /*
     @GetMapping("/login")
     public boolean logIn(String username, String password) {
         if (repo.logIn(username, password)) {
@@ -100,7 +103,7 @@ private boolean validerBillett(Billett billett) {
         logger.error("Valideringsfeil for billettobjekt");
         return false;
     }
-
+*/
 }
 
 
@@ -113,6 +116,6 @@ private boolean validerBillett(Billett billett) {
 
 
 
-}
+
 
 

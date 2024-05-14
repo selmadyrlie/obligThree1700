@@ -51,7 +51,7 @@ public class Repository {
     }
 
 
-
+/*
     public boolean logIn(String username, String password) {
         String sql = "SELECT FROM User WHERE username = ? AND password = ?";
         try {
@@ -65,7 +65,7 @@ public class Repository {
             return false;
         }
     }
-
+*/
 
 
 
